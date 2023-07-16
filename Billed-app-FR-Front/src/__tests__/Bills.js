@@ -57,9 +57,9 @@ describe("Given I am connected as an employee", () => {
         const datesSorted = [...dates].sort(antiChrono)
         expect(dates).toEqual(datesSorted)
       })
-
       //tester le bouton nouvelle note de frais
       test("The button  add a new bill must be diplayed", () => {
+
         Object.defineProperty(window, 'localStorage', { value: localStorageMock })
         window.localStorage.setItem('user', JSON.stringify({ type: 'Employee' }))
         document.body.innerHTML = BillsUI({ data: bills })
