@@ -145,9 +145,20 @@ export default class {
       this.counter ++
     }
 
+    // [4 - Bug hunt] - je sélectionne un ticket, puis je déplie une seconde liste, je ne peux plus sélectionner un ticket de la première liste.
+    // Avec le console.log() je constate que les eventlisteners sont ajoutés et se cumulent a chq ouverture d'un menu déroulant
+    // A chaque fois que je déroule une liste la méthode handeShowtickets() est appelée et ajoute un eventlistener supplémentaire sur les tickets déjà visibles
+    // On ajoute une méthode (Jquery) supplémentaire qui permet de d'abord supprimer les eventListener existants avant d'en ajouter d'autres (méthode off() )
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      $(`#open-bill${bill.id}`).off().click((e) => {
+        this.handleEditTicket(e, bill, bills);
+        console.log(bill);
+      })
     })
+
+    // bills.forEach(bill => {
+    //   $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+    // })
 
     return bills
 
