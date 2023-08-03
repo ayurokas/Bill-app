@@ -42,6 +42,7 @@ export default class Login {
     const user = {
       type: "Admin",
 
+      // [2 - Bug report - Login] - Impossible de se connecter comme Admin avec les bons identifiants - Le test Login.js est au rouge/FAIL
       // Erreur en console qui redirige vers ce fichier (Login.js) / Mauvaise selection de l'input via data-testid
       // Corrige "admin" et non pas "employee" = OK (test PASS)
 
