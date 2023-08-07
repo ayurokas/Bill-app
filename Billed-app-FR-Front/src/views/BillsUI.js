@@ -20,23 +20,9 @@ const row = (bill) => {
 };
 
 const rows = (data) => {
-  // [1 - Bug report] - Le test Bills.js est au rouge/FAIL (src/__tests__/Bills.js) / les notes de frais ne s'affichent pas par ordre décroissant.
-  // Ajout de la méthode sort() pour trier les datas de manière décroissante en fonction de leurs dates (__test__/Bills.js) -  OK (test PASS)
-
-  // return (data && data.length) ? data
-  // .map(bill => row(bill))
-  // .join("") : ""
-
-  return data && data.length
-    ? data
-        // .sort((a, b) => (a.date < b.date ? 1 : -1))
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map((bill) => row(bill))
-        .join("")
-    : "";
-};
-
-export default ({ data: bills, loading, error }) => {
+  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+}
+  export default ({ data: bills, loading, error }) => {
   const modal = () => `
     <div class="modal fade" id="modaleFile" data-testid='modaleFile' tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

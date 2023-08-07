@@ -12,12 +12,15 @@ import { localStorageMock } from "../__mocks__/localStorage.js";
 import mockStore from "../__mocks__/store.js";
 import router from "../app/Router.js";
 
+// On simule le module "../app/store" en renvoyant mockStore lors des tests.
 jest.mock("../app/store", () => mockStore);
 
+// Redéfinit la propriété "localStorage" de l'objet "window" avec une version simulée (localStorageMock).
 beforeEach(() => {
   Object.defineProperty(window, "localStorage", {
     value: localStorageMock,
   });
+  // Ajoute un utilisateur fictif dans le localStorage pour les tests.
   window.localStorage.setItem(
     "user",
     JSON.stringify({
@@ -44,18 +47,13 @@ describe("Given I am connected as an employee", () => {
     });
 
     test("Then bills should be ordered from earliest to latest", () => {
-      document.body.innerHTML = BillsUI({ data: bills });
-      const dates = screen
-        .getAllByText(
-          /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i
-        )
-        .map((a) => a.innerHTML);
-
+      document.body.innerHTML = BillsUI({ data: bills })
+      const dates = screen.getAllByText(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i).map(a => a.innerHTML)
       // Test correspondant au Bug 1
       // [1 - Bug report] - Le test Bills est au rouge/FAIL (src/__tests__/Bills.js) / les notes de frais ne s'affichent pas par ordre décroissant.
-      const antiChrono = (a, b) => (a < b ? 1 : -1);
-      const datesSorted = [...dates].sort(antiChrono);
-      expect(dates).toEqual(datesSorted);
+      const antiChrono = (a, b) => {return new Date(b.date) - new Date(a.date)}
+      const datesSorted = [...dates].sort(antiChrono)
+      expect(dates).toEqual(datesSorted)
     });
   });
 

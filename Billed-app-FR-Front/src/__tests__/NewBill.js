@@ -149,30 +149,36 @@ describe("Given I am a user connected as an employee", () => {
       root.setAttribute("id", "root");
       document.body.appendChild(root);
       router();
-    });
-  
-    test("fetches bills from an API and fails with 404 message error", async () => {
-      mockStore.bills = jest.fn().mockReturnValue({
-        list: () => Promise.reject(new Error("Erreur 404"))
+
+      test("Then fetches bills to mock API POST and fails with 404 message error", async () => {
+        jest.spyOn(mockStore, "bills").mockImplementationOnce(() => {
+          return {
+            create: () => {
+              return Promise.reject(new Error("Erreur 404"));
+            },
+          };
+        });
+
+        window.onNavigate(ROUTES_PATH.NewBill);
+        await new Promise(process.nextTick);
+        const message = await screen.getByText(/Erreur 404/);
+        expect(message).toBeTruthy();
       });
-  
-      window.onNavigate(ROUTES_PATH.Bills);
-      await new Promise(process.nextTick);
-  
-      const message = await screen.getByText(/Erreur 404/);
-      expect(message).toBeTruthy();
-    });
-  
-    test("fetches messages from an API and fails with 500 message error", async () => {
-      mockStore.bills = jest.fn().mockReturnValue({
-        list: () => Promise.reject(new Error("Erreur 500"))
+
+      test("Then fetches new bill to mock API POST and fails with 500 message error", async () => {
+        jest.spyOn(mockStore, "bills").mockImplementationOnce(() => {
+          return {
+            create: () => {
+              return Promise.reject(new Error("Erreur 500"));
+            },
+          };
+        });
+
+        window.onNavigate(ROUTES_PATH.NewBill);
+        await new Promise(process.nextTick);
+        const message = await screen.getByText(/Erreur 500/);
+        expect(message).toBeTruthy();
       });
-  
-      window.onNavigate(ROUTES_PATH.Bills);
-      await new Promise(process.nextTick);
-  
-      const message = await screen.getByText(/Erreur 500/);
-      expect(message).toBeTruthy();
     });
   });
 });

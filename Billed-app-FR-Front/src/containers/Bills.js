@@ -34,25 +34,31 @@ export default class {
       .list()
       .then(snapshot => {
         const bills = snapshot
-          .map(doc => {
-            try {
-              return {
-                ...doc,
-                date: formatDate(doc.date),
-                status: formatStatus(doc.status)
-              }
-            } catch(e) {
-              // if for some reason, corrupted data was introduced, we manage here failing formatDate function
-              // log the error and return unformatted date in that case
-              console.log(e,'for',doc)
-              return {
-                ...doc,
-                date: doc.date,
-                status: formatStatus(doc.status)
-              }
+        // [1 - Bug report] - Le test Bills.js est au rouge/FAIL (src/__tests__/Bills.js) / les notes de frais ne s'affichent pas par ordre décroissant.
+        // Ajout de la méthode sort() pour trier les datas de manière décroissante en fonction de leurs dates (__test__/Bills.js) -  OK (test PASS)
+        .sort((a, b) => {
+          return new Date(b.date) - new Date(a.date)
+        })
+
+        .map(doc => {
+          try {
+            return {
+              ...doc,
+              date: formatDate(doc.date),
+              status: formatStatus(doc.status)
             }
-          })
-          console.log('length', bills.length)
+          } catch(e) {
+            // if for some reason, corrupted data was introduced, we manage here failing formatDate function
+            // log the error and return unformatted date in that case
+            // console.log(e,'for',doc)
+            return {
+              ...doc,
+              date: doc.date,
+              status: formatStatus(doc.status)
+            }
+          }
+        })
+        // console.log('length', bills.length)
         return bills
       })
     }
