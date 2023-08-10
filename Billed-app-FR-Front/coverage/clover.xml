@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1691354878961" clover="3.2.0">
-  <project timestamp="1691354878961" name="All files">
-    <metrics statements="229" coveredstatements="210" conditionals="92" coveredconditionals="77" methods="70" coveredmethods="56" elements="391" coveredelements="343" complexity="0" loc="229" ncloc="229" packages="3" files="16" classes="16"/>
+<coverage generated="1691451744523" clover="3.2.0">
+  <project timestamp="1691451744523" name="All files">
+    <metrics statements="227" coveredstatements="208" conditionals="92" coveredconditionals="77" methods="69" coveredmethods="55" elements="388" coveredelements="340" complexity="0" loc="227" ncloc="227" packages="3" files="16" classes="16"/>
     <package name="constants">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="routes.js" path="C:\Users\Eliza\Documents\GitHub\bill-app\Billed-app-FR-Front\src\constants\routes.js">
@@ -43,11 +43,11 @@
         <line num="31" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="32" count="7" type="stmt"/>
         <line num="36" count="5" type="stmt"/>
-        <line num="39" count="30" type="stmt"/>
-        <line num="43" count="20" type="stmt"/>
+        <line num="40" count="30" type="stmt"/>
         <line num="44" count="20" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="61" count="5" type="stmt"/>
+        <line num="45" count="20" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="62" count="5" type="stmt"/>
       </file>
       <file name="Dashboard.js" path="C:\Users\Eliza\Documents\GitHub\bill-app\Billed-app-FR-Front\src\containers\Dashboard.js">
         <metrics statements="74" coveredstatements="71" conditionals="41" coveredconditionals="33" methods="24" coveredmethods="19"/>
@@ -229,25 +229,23 @@
       </file>
     </package>
     <package name="views">
-      <metrics statements="30" coveredstatements="30" conditionals="30" coveredconditionals="30" methods="15" coveredmethods="15"/>
+      <metrics statements="28" coveredstatements="28" conditionals="30" coveredconditionals="30" methods="14" coveredmethods="14"/>
       <file name="Actions.js" path="C:\Users\Eliza\Documents\GitHub\bill-app\Billed-app-FR-Front\src\views\Actions.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="34" type="stmt"/>
       </file>
       <file name="BillsUI.js" path="C:\Users\Eliza\Documents\GitHub\bill-app\Billed-app-FR-Front\src\views\BillsUI.js">
-        <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
+        <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="5" coveredmethods="5"/>
         <line num="7" count="6" type="stmt"/>
         <line num="8" count="32" type="stmt"/>
         <line num="22" count="6" type="stmt"/>
-        <line num="30" count="13" type="cond" truecount="4" falsecount="0"/>
-        <line num="33" count="27" type="stmt"/>
-        <line num="34" count="32" type="stmt"/>
-        <line num="40" count="22" type="stmt"/>
-        <line num="57" count="22" type="cond" truecount="2" falsecount="0"/>
-        <line num="58" count="7" type="stmt"/>
-        <line num="59" count="15" type="cond" truecount="2" falsecount="0"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="63" count="13" type="stmt"/>
+        <line num="23" count="32" type="cond" truecount="4" falsecount="0"/>
+        <line num="26" count="22" type="stmt"/>
+        <line num="43" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="7" type="stmt"/>
+        <line num="45" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="49" count="13" type="stmt"/>
       </file>
       <file name="DashboardFormUI.js" path="C:\Users\Eliza\Documents\GitHub\bill-app\Billed-app-FR-Front\src\views\DashboardFormUI.js">
         <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
